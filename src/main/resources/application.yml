@@ -1,0 +1,13 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    driver-class-name: dm.jdbc.driver.DmDriver
+    url: jdbc:dm://localhost:5236
+    username: SYSDBA
+    password: 123456789
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+#  type-aliases-package: com.example.demo.entity
+#  configLocation: classpath:mybatis/mybatis-config.xml
+#  basePackage: com.example.demo.dao

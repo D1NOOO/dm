@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.AddressDao">
+  <select id="list" resultType="com.example.demo.entity.Address">
+    SELECT * FROM person.address
+  </select>
+
+  <insert id="saveAddress" parameterType="com.example.demo.entity.Address">
+    INSERT INTO person.address
+    (address1,address2,city,postalcode)
+    VALUES
+    (#{address1},#{address2},#{city},#{postalcode})
+  </insert>
+
+  <delete id="deleteAddress" parameterType="com.example.demo.entity.Address">
+    DELETE FROM person.address
+    WHERE ADDRESSID = #{addressId}
+  </delete>
+
+  <update id="updateAddress" parameterType="com.example.demo.entity.Address">
+    UPDATE person.address
+    <set>
+      <if test="address1 !=null and address1 !=''">ADDRESS1 = #{address1},</if>
+      <if test="address2 !=null and address2 !=''">ADDRESS2 = #{address2},</if>
+      <if test="city !=null and city !=''">CITY = #{city},</if>
+      <if test="postalcode !=null and postalcode !=''">POSTALCODE = #{postalcode},</if>
+    </set>
+    WHERE ADDRESSID = #{addressId}
+  </update>
+
+  <select id="getAddress" parameterType="com.example.demo.entity.Address" resultType="com.example.demo.entity.Address">
+    SELECT ADDRESSID, ADDRESS1, ADDRESS2, CITY, POSTALCODE
+    FROM PERSON.ADDRESS
+    WHERE ADDRESSID = #{addressId}
+  </select>
+</mapper>
